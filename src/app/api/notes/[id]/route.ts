@@ -8,7 +8,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const resolvedParams = await params;
-  const id = resolvedParams.id;
+  const { id } = resolvedParams;
 
   try {
     const note = await findNoteById(id);
@@ -46,7 +46,7 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const resolvedParams = await params;
-  const id = resolvedParams.id;
+  const { id } = resolvedParams;
 
   try {
     const updateNoteDto: UpdateNoteDto = await request.json();
@@ -97,7 +97,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const resolvedParams = await params;
-  const id = resolvedParams.id;
+  const { id } = resolvedParams;
 
   try {
     const deleted = await deleteNote(id);
