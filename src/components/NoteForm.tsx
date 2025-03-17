@@ -52,7 +52,7 @@ export default function NoteForm({
         title: title.trim(),
         content: content.trim(),
       };
-
+      await onSubmit(data);
       // Redirect to notes list after successful submission
       router.push("/notes");
       router.refresh();
@@ -65,7 +65,7 @@ export default function NoteForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6  ">
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
           {error}
@@ -75,7 +75,7 @@ export default function NoteForm({
       <div>
         <label
           htmlFor="title"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
           Title
         </label>
@@ -92,7 +92,7 @@ export default function NoteForm({
       <div>
         <label
           htmlFor="content"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
           Content
         </label>
@@ -110,7 +110,7 @@ export default function NoteForm({
         <button
           type="button"
           onClick={() => router.back()}
-          className="px-4 py-2 border rounded text-gray-700 hover:bg-gray-100"
+          className="px-4 py-2 border rounded text-gray-700 dark:bg-gray-100 hover:bg-gray-100"
         >
           Cancel
         </button>

@@ -51,7 +51,7 @@ export default function NotesPage() {
   return (
     <div className="container mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">All Notes</h1>
+        <h1 className="text-2xl dark:text-gray-100 font-bold">All Notes</h1>
         <Link
           href="/notes/new"
           className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
@@ -61,14 +61,14 @@ export default function NotesPage() {
       </div>
 
       {/* Search form */}
-      <form onSubmit={handleSearch} className="mb-6">
-        <div className="flex">
+      <form onSubmit={handleSearch} className="mb-6 ">
+        <div className="flex ">
           <input
             type="text"
             placeholder="Search notes..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-grow px-4 py-2 border rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-grow px-4 py-2 border rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500 "
           />
           <button
             type="submit"

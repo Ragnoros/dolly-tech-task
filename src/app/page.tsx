@@ -8,11 +8,11 @@ export default async function HomePage() {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">
+      <h1 className="text-3xl dark:text-gray-100 font-bold mb-6">
         Welcome to the Note-Taking App
       </h1>
 
-      <div className="bg-white shadow rounded-lg p-6 mb-6">
+      <div className="bg-white dark:bg-gray-900  dark:text-gray-100 shadow rounded-lg p-6 mb-6">
         <h2 className="text-xl font-semibold mb-4">About This App</h2>
         <p className="mb-4">
           This application demonstrates an App using Next.js and TypeScript.
@@ -23,8 +23,10 @@ export default async function HomePage() {
         </p>
       </div>
 
-      <div className="bg-white shadow rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">Get Started</h2>
+      <div className="bg-white shadow dark:bg-gray-900 rounded-lg p-6">
+        <h2 className="text-xl dark:text-gray-100 font-semibold mb-4">
+          Get Started
+        </h2>
         <div className="space-y-4">
           <Link
             href="/notes"

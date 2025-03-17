@@ -5,9 +5,10 @@ import { deleteNote, findNoteById, updateNote } from "@/actions/noteActions";
 // GET /api/notes/[id] - Get a single note by ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const id = params.id;
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
 
   try {
     const note = await findNoteById(id);
@@ -42,9 +43,10 @@ export async function GET(
 // PUT /api/notes/[id] - Update a note
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const id = params.id;
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
 
   try {
     const updateNoteDto: UpdateNoteDto = await request.json();
@@ -92,9 +94,10 @@ export async function PUT(
 // DELETE /api/notes/[id] - Delete a note
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const id = params.id;
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
 
   try {
     const deleted = await deleteNote(id);

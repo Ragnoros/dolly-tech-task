@@ -43,13 +43,17 @@ export default function NoteItem({ note, onDelete }: NoteItemProps) {
   };
 
   return (
-    <div className="bg-white rounded shadow p-4 h-full flex flex-col">
+    <div className="bg-white dark:bg-gray-900 rounded shadow p-4 h-full flex flex-col">
       <div className="flex-grow">
-        <h3 className="text-lg font-semibold mb-2">{note.title}</h3>
-        <p className="text-gray-600 mb-4 text-sm">
+        <h3 className="text-lg dark:text-gray-100 font-semibold mb-2">
+          {note.title}
+        </h3>
+        <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
           {formatDate(note.updatedAt)}
         </p>
-        <p className="text-gray-800 mb-4">{truncateContent(note.content)}</p>
+        <p className="text-gray-800 dark:text-gray-300 mb-4">
+          {truncateContent(note.content)}
+        </p>
       </div>
 
       <div className="flex justify-between mt-4 pt-4 border-t border-gray-100">

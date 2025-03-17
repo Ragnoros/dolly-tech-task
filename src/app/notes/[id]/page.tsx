@@ -7,9 +7,14 @@ import { Note, UpdateNoteDto } from "@/models/Note";
 import NoteForm from "@/components/NoteForm";
 import Link from "next/link";
 
-export default function NotePage({ params }: { params: { id: string } }) {
+export default function NotePage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const router = useRouter();
-  const { id } = params;
+  const resolvedParams = React.use(params);
+  const { id } = resolvedParams;
 
   const [note, setNote] = useState<Note | null>(null);
   const [loading, setLoading] = useState(true);
@@ -108,15 +113,19 @@ export default function NotePage({ params }: { params: { id: string } }) {
     <div className="max-w-2xl mx-auto">
       {isEditing ? (
         <>
-          <h1 className="text-2xl font-bold mb-6">Edit Note</h1>
-          <div className="bg-white shadow rounded-lg p-6">
+          <h1 className="text-2xl font-bold mb-6 dark:text-gray-100">
+            Edit Note
+          </h1>
+          <div className="bg-white dark:bg-gray-900 shadow rounded-lg p-6">
             <NoteForm note={note} onSubmit={handleUpdate} isEdit={true} />
           </div>
         </>
       ) : (
         <>
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold">{note.title}</h1>
+            <h1 className="text-2xl font-bold dark:text-gray-100">
+              {note.title}
+            </h1>
             <div className="space-x-2">
               <button
                 onClick={() => setIsEditing(true)}
@@ -133,8 +142,8 @@ export default function NotePage({ params }: { params: { id: string } }) {
             </div>
           </div>
 
-          <div className="bg-white shadow rounded-lg p-6">
-            <div className="text-sm text-gray-500 mb-4">
+          <div className="bg-white dark:bg-gray-900 dark:text-gray-100 shadow rounded-lg p-6">
+            <div className="text-sm text-gray-500 dark:text-gray-300 mb-4">
               <p>Created: {formatDate(note.createdAt)}</p>
               <p>Last updated: {formatDate(note.updatedAt)}</p>
             </div>
