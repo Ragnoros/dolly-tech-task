@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
 
 const DarkModeToggle: React.FC = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(
-    localStorage.getItem("theme") === "dark"
-  );
+  const [darkMode, setDarkMode] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+    const storedTheme = localStorage.getItem("theme");
+    setDarkMode(storedTheme === "dark");
+  }, []);
+
+  useEffect(() => {
+    if (darkMode !== null) {
+      if (darkMode) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
     }
   }, [darkMode]);
+
+  if (darkMode === null) return null;
 
   return (
     <button

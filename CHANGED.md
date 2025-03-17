@@ -27,3 +27,26 @@ Stopped const updatedNote from updating createdAt every time by switching "new D
 
 <h3>10: Dark Mode</h5>
 First I set darkMode: "media" in tailwind.config.js rather than class so that it would use my system settings to decide dark vs light. Then I implemented dark mode by adding things like "dark:text-gray-100" to the inline CSS.  After implementation I added DarkModeToggle.tsx and changed darkMode: "media" to "class" so I could put a button on the web app that changes the theme. I placed the button on the navigation bar
+
+<h3>11: DarkModeToggle.tsx localStorage bug for dark mode</h3>
+On first render localStorage threw an error because it was undefined. I originally tried to put a '?' next to localStorage to make it optional but the program still didn't like it. Decided to add in boolean | null>(null) to useState so that initally localStorage doesn't get accessed because it's null. The setDarkMode is then put into a useEffect and runs on component render. Once this happens localStorage now exists so the error does not happen.
+
+<h4>The error in question: </h4>
+
+ReferenceError: localStorage is not defined
+at DarkModeToggle (src\components\DarkModeToggle.tsx:5:4)
+
+```
+3 | const DarkModeToggle: React.FC = () => {
+4 | const [darkMode, setDarkMode] = useState<boolean>(
+
+> 5 | localStorage?.getItem("theme") === "dark"
+
+    |    ^
+
+6 | );
+7 |
+8 | useEffect(() => { {
+digest: '1750764143'
+}
+```
