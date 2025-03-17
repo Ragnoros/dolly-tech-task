@@ -23,7 +23,7 @@ I made the same change as 6 and 4 for the PUT function for update note but it di
 Changed the method for updating note to PUT rather than POST in noteServices (was looking in the wrong place for ages). Can now update notes
 
 <h3>9: BUG 2</h3>
-Stopped const updatedNote from updating creatiedAt every time by switching "new Date().toISOString()" to "notes[noteIndex].createdAt"
+Stopped const updatedNote from updating createdAt every time by switching "new Date().toISOString()" to "notes[noteIndex].createdAt"
 
 <h3>10: Dark Mode</h5>
 First I set darkMode: "media" in tailwind.config.js rather than class so that it would use my system settings to decide dark vs light. Then I implemented dark mode by adding things like "dark:text-gray-100" to the inline CSS.  After implementation I added DarkModeToggle.tsx and changed darkMode: "media" to "class" so I could put a button on the web app that changes the theme. I placed the button on the navigation bar
