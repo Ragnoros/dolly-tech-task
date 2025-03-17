@@ -50,3 +50,13 @@ at DarkModeToggle (src\components\DarkModeToggle.tsx:5:4)
 digest: '1750764143'
 }
 ```
+
+<h3>12: BUG 3</h3>
+Added the below code to NoteItem.tsx to ask if user is sure about deletion:
+
+```
+const userConfirmed = window.confirm(
+      "Are you sure you want to delete this note?"
+    );
+    if (!userConfirmed) return;
+```

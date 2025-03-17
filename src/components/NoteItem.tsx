@@ -27,6 +27,10 @@ export default function NoteItem({ note, onDelete }: NoteItemProps) {
     if (!onDelete) return;
 
     // BUG #3: Missing state handling - deleting without confirming
+    const userConfirmed = window.confirm(
+      "Are you sure you want to delete this note?"
+    );
+    if (!userConfirmed) return;
     try {
       setIsDeleting(true);
       await onDelete(note.id);
