@@ -17,10 +17,10 @@ I added "await onSubmit(data)" to the handleSubmit function in the NoteForm comp
 Same problem as 4 but for DELETE in route.ts so made sure to await the promise because params is a promise
 
 <h3>7: PUT [id] route.ts</h3>
-I made the same change as 6 and 4 for the PUT function for update note but it did not fix the 405 error. Will continue working on it.
+I made the same change as 6 and 4 for the PUT function for update note but it did not fix the 405 error when trying to edit/update note. Will continue working on it.
 
 <h3>8: BUG 1</h3>
-Changed the method for updating note to PUT rather than POST in noteServices (was looking in the wrong place for ages)
+Changed the method for updating note to PUT rather than POST in noteServices (was looking in the wrong place for ages). Can now update notes
 
 <h3>9: BUG 2</h3>
 Stopped const updatedNote from updating creatiedAt every time by switching "new Date().toISOString()" to "notes[noteIndex].createdAt"
